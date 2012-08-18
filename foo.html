@@ -1,17 +1,25 @@
-
 <head>
-	<title>Line Charts and Options</title>
-
-    <link class="include" rel="stylesheet" type="text/css" href="/jqplot/jquery.jqplot.min.css" />
-    <script class="include" type="text/javascript" src="/jqplot/jquery.min.js"></script>
-    <script class="include" type="text/javascript" src="/jqplot/jquery.jqplot.min.js"></script>
-    <script class="include" type="text/javascript" src="/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
-    <script class="include" type="text/javascript" src="/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
-    <script language="javascript" type="text/javascript" src="/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+  <title>Bar Grapher</title>
+  <link class="include" rel="stylesheet" type="text/css" href="/jqplot/jquery.jqplot.min.css" />
+  <script class="include" type="text/javascript" src="/jqplot/jquery.min.js"></script>
+  <script class="include" type="text/javascript" src="/jqplot/jquery.jqplot.min.js"></script>
+  <script class="include" type="text/javascript" src="/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+  <script class="include" type="text/javascript" src="/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+  <script language="javascript" type="text/javascript" src="/jqplot/plugins/jqplot.barRenderer.min.js"></script>
 </head>
 <h1>Foo</h1>
 <div id="chart2" style="height:300px; width:500px;"></div>
 <script class="code" type="text/javascript">
+function getParameterByName(name)
+{
+  var regexS = "[\\?&]" + name + "=([^&#]*)";
+  var regex = new RegExp(regexS);
+  var results = regex.exec(window.location.search);
+  if(results == null)
+    return "";
+  else
+    return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 $(document).ready(function(){
   make_graph = function(data) {
     var plot2 = $.jqplot('chart2', [data], {  
@@ -28,7 +36,17 @@ $(document).ready(function(){
         }
     });
   };
-  var url = '/graphing/foo.json';
-  $.getJSON(url, make_graph);
+  var url = getParameterByName('url');
+  if (url) {
+    $.ajax({
+      url: url,
+      dataType: 'json',
+      success: make_graph,
+      error: function() {alert("invalid url");}
+    });
+  }
+  else {
+    alert("must supply a url parameter w/json data");
+  }
 });
 </script>

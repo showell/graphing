@@ -1,5 +1,9 @@
-TODO:
-    figure out way to access url thru query vars (impossible thru nginx?)
+This is an example way to create a generic graphing engine that can take
+customized data sources.  It is not intended to grow into a project; it's
+mostly just example code to get a quick start with nginx and jqplot.
+
+example usage:
+    http://localhost:8000/graphing/foo.html?url=/graphing/foo.json
 
 jqplot:
     https://bitbucket.org/cleonello/jqplot/downloads/
@@ -13,8 +17,6 @@ nginx:
     virtual host setup:
         server {
             listen       8000;
-            # listen       somename:8080;
-            # server_name  somename  alias  another.alias;
 
             location ~ /jqplot/ {
                 root   /Users/steve;
