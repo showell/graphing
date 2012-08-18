@@ -7,7 +7,7 @@
   <script class="include" type="text/javascript" src="/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
   <script language="javascript" type="text/javascript" src="/jqplot/plugins/jqplot.barRenderer.min.js"></script>
 </head>
-<h1>Foo</h1>
+see https://github.com/showell/graphing/
 <div id="chart2" style="height:300px; width:500px;"></div>
 <script class="code" type="text/javascript">
 function getParameterByName(name)
@@ -26,11 +26,11 @@ $(document).ready(function(){
         series:[{showMarker:false, renderer:$.jqplot.BarRenderer}],
         axes:{
           xaxis:{
-            label:'Angle (radians)',
+            label: 'X values',
             labelRenderer: $.jqplot.CanvasAxisLabelRenderer
           },
           yaxis:{
-            label:'Cosine',
+            label: 'Y values',
             labelRenderer: $.jqplot.CanvasAxisLabelRenderer
           }
         }
