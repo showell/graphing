@@ -1,3 +1,6 @@
+TODO:
+    figure out way to access url thru query vars (impossible thru nginx?)
+
 jqplot:
     https://bitbucket.org/cleonello/jqplot/downloads/
 
